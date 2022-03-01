@@ -20,7 +20,7 @@
             "description": "Get this value from https://my.telegram.org",
             "value": ""
         },
-        "API_KEY": {
+        "api_key": {
             "description": "Get API key from https://droplink.co/member/tools/api",
             "required": false
         }
