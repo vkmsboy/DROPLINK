@@ -13,7 +13,7 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from os import environ
 import aiohttp
 from pyrogram import Client, filters
@@ -42,6 +42,7 @@ async def start(bot, message):
     await message.reply(
         f"**Hi {message.chat.first_name}! Send Your Api Here 😉**\n\n"
         "Some Went Worng contact 👉 <a href=\"https://t.me/groupdcbots\">@Groupdcbots</a>.")
+        
 
 
 @bot.on_message(filters.regex(r'https?://[^\s]+') & filters.private)
@@ -51,7 +52,14 @@ async def link_handler(bot, message):
     for num in range(len(links)):
       try:
         short_link = await get_shortlink(links[num])
-        await message.reply(f'**🔱 Long URL:** {links[num]}\n**⚜️ Shortened URL:** {short_link}\n\n〽️ Powered by <a href="https://t.me/groupdcbots\">@Groupdcbots</a>', quote=True, disable_web_page_preview=True)
+        await message.reply(
+          text = "i shorted your link"
+          reply_markup=InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton("🤖 Join Updates Channel", url=f"{short_link}"
+                            ]
+                        ], quote=True, disable_web_page_preview=True)
       except Exception as e:
         await message.reply(f'Error: {e}', quote=True)
 
