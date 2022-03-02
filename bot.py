@@ -53,14 +53,7 @@ async def link_handler(bot, message):
 #       try:
         short_link = await get_shortlink(links[num])
         await message.reply(
-          text = "i shorted your link" 
-          reply_markup=InlineKeyboardMarkup(
-          [
-          [
-          InlineKeyboardButton("🤖 Join Updates Channel", url=f"{short_link}" 
-          ]
-          ]
-          )
+          text = f"i shorted your link {short_link}"
 #       except Exception as e:
 #         await message.reply(f'Error: {e}', quote=True)
 
